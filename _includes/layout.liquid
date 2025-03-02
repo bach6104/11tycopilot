@@ -1,22 +1,29 @@
----
-title: 11ty Boilerplate
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
   <title>{{ title }}</title>
+
+  <!-- Alpine Core + Alpine Fetch -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@alpine-collective/toolkit-fetch@1.0.1/dist/cdn.min.js" defer></script>
+
+  <!-- Tailwind from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <!-- Your local JS + CSS -->
+  <script src="/scripts/randomNumber.js" defer></script>
   <link rel="stylesheet" href="/styles/screen.css">
 </head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="/" title="Go home">Home</a></li>
-      <li><a href="/about/" title="About the boilerplate">About</a></li>
-    </ul>
-  </nav>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow mb-6">
+    <nav class="container mx-auto px-4 py-4 flex space-x-4">
+      <a href="/" class="text-blue-600 hover:underline">Home</a>
+      <a href="/reflection" class="text-blue-600 hover:underline">AI Reflection</a>
+    </nav>
+  </header>
+  <main class="container mx-auto px-4">
     {{ content }}
+  </main>
 </body>
 </html>

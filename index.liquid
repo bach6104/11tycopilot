@@ -1,7 +1,64 @@
 ---
 layout: layout.liquid
-title: 11ty Boilerplate
+title: "Home"
 ---
 
-<h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
-<img alt="pine" src="/images/pine.png" width="50" />
+<div 
+  x-data="{
+    productA: null,
+    productB: null,
+    randomNum: null,
+
+    init() {
+      // Fetch product #1
+      fetch('https://dummyjson.com/products/1')
+        .then(response => response.json())
+        .then(data => {
+          this.productA = data;
+        });
+
+      // Fetch product #2
+      fetch('https://dummyjson.com/products/2')
+        .then(response => response.json())
+        .then(data => {
+          this.productB = data;
+        });
+    },
+  }"
+  class="my-8"
+>
+
+  <h1 class="text-3xl font-bold mb-4">Welcome to My 11ty Site</h1>
+
+  <!-- Section for Product A -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">Product A</h2>
+    <template x-if="productA">
+      <article class="p-4 bg-white shadow rounded max-w-md">
+        <img class="mb-3" :src="productA.thumbnail" :alt="productA.title" />
+        <h3 class="text-xl font-bold mb-1" x-text="productA.title"></h3>
+        <p class="text-gray-700 mb-2" x-text="productA.description"></p>
+        <p class="font-semibold">
+          Price: $<span x-text="productA.price"></span>
+        </p>
+      </article>
+    </template>
+  </section>
+
+  <!-- Section for Product B -->
+  <section class="mb-6">
+    <h2 class="text-2xl font-semibold mb-2">Product B</h2>
+    <template x-if="productB">
+      <article class="p-4 bg-white shadow rounded max-w-md">
+        <img class="mb-3" :src="productB.thumbnail" :alt="productB.title" />
+        <h3 class="text-xl font-bold mb-1" x-text="productB.title"></h3>
+        <p class="text-gray-700 mb-2" x-text="productB.description"></p>
+        <p class="font-semibold">
+          Price: $<span x-text="productB.price"></span>
+        </p>
+      </article>
+    </template>
+  </section>
+
+
+</div>
